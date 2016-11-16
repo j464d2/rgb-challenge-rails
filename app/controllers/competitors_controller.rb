@@ -8,15 +8,15 @@ class CompetitorsController < ApplicationController
       competitor.update(competitor_params) if competitor.score < score
     else
       redirect_to competotirs_path
+    end
   end
 
   def index
     @competitors = Competitor.all.order(score: :desc).limit(10)
-end
+  end
 
-private
-
-def competitor_params
-  params.require(:competitor).permit(:email, :score)
-end
+  private
+    def competitor_params
+      params.require(:competitor).permit(:email, :score)
+    end
 end
